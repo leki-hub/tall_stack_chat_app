@@ -9,13 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+ // database/migrations/xxxx_xx_xx_create_messages_table.php
+public function up()
+{
+    Schema::create('messages', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        $table->text('body');
+        $table->timestamps();
+    });
+}
+
 
     /**
      * Reverse the migrations.
