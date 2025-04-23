@@ -28,6 +28,13 @@ class Chat extends Component
         $this->message = '';
     }
 
+    public function triggerTyping()
+    {
+        $this->dispatch('user-typing', auth()->user()->name);
+    }
+
+
+
     public function render()
     {
         return view('livewire.chat', [
